@@ -1,4 +1,4 @@
-package com.medical.calculator.dao;
+package com.medical.calculator.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

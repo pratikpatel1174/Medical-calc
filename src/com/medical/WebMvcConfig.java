@@ -1,4 +1,4 @@
-package com.medical.calculator;
+package com.medical;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("com.medical.calculator")
+@ComponentScan("com.medical.*")
 public class WebMvcConfig {
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {

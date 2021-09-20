@@ -7,7 +7,7 @@
 	
 	<persistence-unit name="MedicalDb">
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-1.ck4wsfjf4sqv.ap-south-1.rds.amazonaws.com:3306/db_projectpoi" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-1.ck4wsfjf4sqv.ap-south-1.rds.amazonaws.com:3306/db_poi" />
 			<property name="javax.persistence.jdbc.user" value="admin" />
 			<property name="javax.persistence.jdbc.password" value="Nikunj9893" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
