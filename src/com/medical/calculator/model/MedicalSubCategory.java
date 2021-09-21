@@ -20,4 +20,36 @@ public class MedicalSubCategory {
 
 	@Column(name = "category_id")
 	private Long categoryId;
+
+	public Long getSubCategoryId() {
+		return subCategoryId;
+	}
+
+	public void setSubCategoryId(Long subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
+
+	public String getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	@Override
+	public String toString() {
+		return "MedicalSubCategory [subCategoryId=" + subCategoryId + ", subCategory=" + subCategory + ", categoryId="
+				+ categoryId + "]";
+	}
+	
+	
 }

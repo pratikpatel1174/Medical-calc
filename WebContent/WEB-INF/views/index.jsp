@@ -25,7 +25,7 @@
 		<c:forEach items="${categoryList}" var="category">
 		<tr>
 			<td>${category.id}</td>
-			<td>${category.category}</td>
+			<td><a href="getSubCategory?id=${category.id}"/>${category.category}</a></td>
 			
 		<%-- 	<td>
 				<a href="edit?id=${customer.id}">Edit</a>
