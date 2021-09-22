@@ -24,8 +24,8 @@
 		</tr>
 		<c:forEach items="${subCategoryList}" var="subcategory">
 		<tr>
-			<td>${subcategory.subCategoryId}</td>
-			<td>${subcategory.subCategory}</td>
+			<td>${subcategory.subCategoryId}</a></td>
+			<td><a href="<c:url value="/subCategoryNav/${subcategory.subCategoryId}"/>" >${subcategory.subCategory}</td>
 			
 			</tr>
 		</c:forEach>

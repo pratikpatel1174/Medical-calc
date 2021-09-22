@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Medical_sub_category")
+@Table(name = "Medical_sub_category")
 public class MedicalSubCategory {
 
 	@Id
@@ -17,6 +17,8 @@ public class MedicalSubCategory {
 	private Long subCategoryId;
 	@Column(name = "sub_category_name")
 	private String subCategory;
+	@Column(name = "sub_category_navigation")
+	private String subCategoryNav;
 
 	@Column(name = "category_id")
 	private Long categoryId;
@@ -45,11 +47,18 @@ public class MedicalSubCategory {
 		this.categoryId = categoryId;
 	}
 
+	public String getSubCategoryNav() {
+		return subCategoryNav;
+	}
+
+	public void setSubCategoryNav(String subCategoryNav) {
+		this.subCategoryNav = subCategoryNav;
+	}
+
 	@Override
 	public String toString() {
-		return "MedicalSubCategory [subCategoryId=" + subCategoryId + ", subCategory=" + subCategory + ", categoryId="
-				+ categoryId + "]";
+		return "MedicalSubCategory [subCategoryId=" + subCategoryId + ", subCategory=" + subCategory
+				+ ", subCategoryNav=" + subCategoryNav + ", categoryId=" + categoryId + "]";
 	}
-	
-	
+
 }
