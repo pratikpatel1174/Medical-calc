@@ -10,30 +10,21 @@
 </head>
 <body>
 
-<h1>False Positive Rate Calculator</h1>
+<h1>Prevalence Rate Formula Calculator</h1>
 
 	<div align="center">
-        <form:form action="../calculateFormula" method="post" modelAttribute="subCatForm">
+        <form:form action="../prevalenceRate" method="post" modelAttribute="subCatForm">
             <table border="0">
   
                 <tr>
-                    <td>Prevalence:</td>
+                    <td>New and pre-existing cases of disease:</td>
                     <td><form:input path="param1" /></td>
-					 <td><form:select class="form-control" path="param1_drop">
-							<option value="1" selected="">fraction</option>
-							<option value="0.01">%</option>
-							<option value="1">ratio</option>
-							</form:select>
-					</td>
+					 
                 </tr>
                 <tr>
-                    <td>Specificity</td>
+                    <td>Population size</td>
                     <td><form:input path="param2" /></td>
-					<td><form:select class="form-control" path="param2_drop">
-							<option value="1" selected="">fraction</option>
-							<option value="0.01">%</option>
-							<option value="1">ratio</option>
-							</form:select></td>
+					
                 </tr>
 					<form:hidden path="subCategoryId" value="${medicalSubCategory.subCategoryId}" />
 					<form:hidden path="subCategoryName" value="${medicalSubCategory.subCategory}" />

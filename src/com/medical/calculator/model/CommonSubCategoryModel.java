@@ -6,6 +6,8 @@ public class CommonSubCategoryModel {
 	private String param1_drop;
 	private Long param2;
 	private String param2_drop;
+	private Long param3_drop;
+	private Long param3;
 	private Long subCategoryId;
 	private String subCategoryName;
 
@@ -57,11 +59,29 @@ public class CommonSubCategoryModel {
 		this.subCategoryName = subCategoryName;
 	}
 
+	public Long getParam3_drop() {
+		return param3_drop;
+	}
+
+	public void setParam3_drop(Long param3_drop) {
+		this.param3_drop = param3_drop;
+	}
+
+	public Long getParam3() {
+		return param3;
+	}
+
+	public void setParam3(Long param3) {
+		this.param3 = param3;
+	}
+
 	@Override
 	public String toString() {
 		return "CommonSubCategoryModel [param1=" + param1 + ", param1_drop=" + param1_drop + ", param2=" + param2
-				+ ", param2_drop=" + param2_drop + ", subCategoryId=" + subCategoryId + ", subCategoryName="
-				+ subCategoryName + "]";
+				+ ", param2_drop=" + param2_drop + ", param3_drop=" + param3_drop + ", param3=" + param3
+				+ ", subCategoryId=" + subCategoryId + ", subCategoryName=" + subCategoryName + "]";
 	}
+
+	
 
 }

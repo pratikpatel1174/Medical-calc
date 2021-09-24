@@ -85,6 +85,48 @@ public class MedicalController {
 				modelAndView.addObject("subCatForm", commonSubCategoryModel);
 				return modelAndView;
 			}
+			if(CommonConstant.FALSE_NEGATIVE_RATE.equalsIgnoreCase(medicalSubCategory.getSubCategory())) {
+				String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+",
+						"-");
+				medicalSubCategory.setSubCategoryNav(subCategoryNavigation);
+				subCategoryRepo.save(medicalSubCategory);
+				System.out.println("subCategoryNavigation " + subCategoryNavigation);
+
+				modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+				modelAndView.addObject("isSubCategoryResult", false);
+				modelAndView.addObject("medicalSubCategory", medicalSubCategory);
+				CommonSubCategoryModel commonSubCategoryModel = new CommonSubCategoryModel();
+				modelAndView.addObject("subCatForm", commonSubCategoryModel);
+				//return modelAndView;
+			}
+			if(CommonConstant.PREVALENCE_RATE.equalsIgnoreCase(medicalSubCategory.getSubCategory())) {
+				String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+",
+						"-");
+				medicalSubCategory.setSubCategoryNav(subCategoryNavigation);
+				subCategoryRepo.save(medicalSubCategory);
+				System.out.println("subCategoryNavigation " + subCategoryNavigation);
+
+				modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+				modelAndView.addObject("isSubCategoryResult", false);
+				modelAndView.addObject("medicalSubCategory", medicalSubCategory);
+				CommonSubCategoryModel commonSubCategoryModel = new CommonSubCategoryModel();
+				modelAndView.addObject("subCatForm", commonSubCategoryModel);
+				//return modelAndView;
+			}
+			if(CommonConstant.INCIDENCE_RATE.equalsIgnoreCase(medicalSubCategory.getSubCategory())) {
+				String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+",
+						"-");
+				medicalSubCategory.setSubCategoryNav(subCategoryNavigation);
+				subCategoryRepo.save(medicalSubCategory);
+				System.out.println("subCategoryNavigation " + subCategoryNavigation);
+
+				modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+				modelAndView.addObject("isSubCategoryResult", false);
+				modelAndView.addObject("medicalSubCategory", medicalSubCategory);
+				CommonSubCategoryModel commonSubCategoryModel = new CommonSubCategoryModel();
+				modelAndView.addObject("subCatForm", commonSubCategoryModel);
+				//return modelAndView;
+			}
 		}
 
 		return modelAndView;
@@ -115,4 +157,92 @@ public class MedicalController {
 
 		return null;
 	}
+	
+	@RequestMapping(value = "/falseNegative", method = RequestMethod.POST)
+	public ModelAndView falseNegative(
+			@ModelAttribute("subCatForm") CommonSubCategoryModel commonSubCategoryModel) {
+		System.out.println("calling.... Calculate Formula");
+		System.out.println("commonSubCategoryModel " + commonSubCategoryModel);
+		Optional<MedicalSubCategory> medicatCategoryOptional = subCategoryRepo
+				.findById(commonSubCategoryModel.getSubCategoryId());
+
+		if (medicatCategoryOptional.isPresent()) {
+			MedicalSubCategory medicalSubCategory = medicatCategoryOptional.get();
+			String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+", "-");
+
+			ModelAndView modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+			Map<String, BigDecimal> resultMap = FormulaUtil.getFalseNegativeRate(commonSubCategoryModel.getParam1(),
+					commonSubCategoryModel.getParam2());
+
+			System.out.println("falseNegativeRateResultMap " + resultMap);
+			modelAndView.addObject("isSubCategoryResult", true);
+			modelAndView.addObject("resultMap", resultMap);
+
+			return modelAndView;
+		}
+		
+
+		return null;
+	}
+	@RequestMapping(value = "/prevalenceRate", method = RequestMethod.POST)
+	public ModelAndView prevalenceRate(
+			@ModelAttribute("subCatForm") CommonSubCategoryModel commonSubCategoryModel) {
+		System.out.println("calling.... Calculate Formula");
+		System.out.println("commonSubCategoryModel " + commonSubCategoryModel);
+		Optional<MedicalSubCategory> medicatCategoryOptional = subCategoryRepo
+				.findById(commonSubCategoryModel.getSubCategoryId());
+
+		if (medicatCategoryOptional.isPresent()) {
+			MedicalSubCategory medicalSubCategory = medicatCategoryOptional.get();
+			String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+", "-");
+
+			ModelAndView modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+			Map<String, BigDecimal> resultMap = FormulaUtil.getPrevelanceRate(commonSubCategoryModel.getParam1(),
+					commonSubCategoryModel.getParam2());
+
+			System.out.println("falseNegativeRateResultMap " + resultMap);
+			modelAndView.addObject("isSubCategoryResult", true);
+			modelAndView.addObject("resultMap", resultMap);
+
+			return modelAndView;
+		}
+		
+
+		return null;
+	}
+	
+	@RequestMapping(value = "/incidenceRate", method = RequestMethod.POST)
+	public ModelAndView incidenceRate(
+			@ModelAttribute("subCatForm") CommonSubCategoryModel commonSubCategoryModel) {
+		System.out.println("calling.... Calculate Formula");
+		System.out.println("commonSubCategoryModel " + commonSubCategoryModel);
+		Optional<MedicalSubCategory> medicatCategoryOptional = subCategoryRepo
+				.findById(commonSubCategoryModel.getSubCategoryId());
+
+		if (medicatCategoryOptional.isPresent()) {
+			MedicalSubCategory medicalSubCategory = medicatCategoryOptional.get();
+			String subCategoryNavigation = medicalSubCategory.getSubCategory().toLowerCase().replaceAll("\\s+", "-");
+
+			ModelAndView modelAndView = new ModelAndView("sub-categories/" + subCategoryNavigation);
+			Long valueofParam3;
+			if(commonSubCategoryModel.getParam3_drop() == 1){valueofParam3 = commonSubCategoryModel.getParam3();}
+			else {valueofParam3=commonSubCategoryModel.getParam3_drop();}
+			if(valueofParam3 != null) {
+			Map<String, BigDecimal> resultMap = FormulaUtil.getIncidenceRate(commonSubCategoryModel.getParam1(),
+					commonSubCategoryModel.getParam2(),valueofParam3);
+			
+			System.out.println("falseNegativeRateResultMap " + resultMap);
+			modelAndView.addObject("isSubCategoryResult", true);
+			modelAndView.addObject("resultMap", resultMap);
+			}else {
+				System.out.println("Handle Error !!!!!!!!!!!!!!!!!!!!!!!");
+			}
+			return modelAndView;
+		}
+		
+
+		return null;
+	}
+
+
 }

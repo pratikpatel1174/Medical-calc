@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<h1>False Positive Rate Calculator</h1>
+<h1>False Negative Rate Calculator</h1>
 
 	<div align="center">
-        <form:form action="../calculateFormula" method="post" modelAttribute="subCatForm">
+        <form:form action="../falseNegative" method="post" modelAttribute="subCatForm">
             <table border="0">
   
                 <tr>
@@ -27,7 +27,7 @@
 					</td>
                 </tr>
                 <tr>
-                    <td>Specificity</td>
+                    <td>Sensitivity</td>
                     <td><form:input path="param2" /></td>
 					<td><form:select class="form-control" path="param2_drop">
 							<option value="1" selected="">fraction</option>
